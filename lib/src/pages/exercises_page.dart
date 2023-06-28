@@ -99,6 +99,7 @@ class ExercisesPage extends StatelessWidget {
               children: List.generate(listFeeling.length, (index) {
                 FeelingModel feelingNow = listFeeling[index];
                 return ListTile(
+                  dense: true,
                   contentPadding: EdgeInsets.zero,
                   title: Text(feelingNow.feeling),
                   subtitle: Text(feelingNow.date),
