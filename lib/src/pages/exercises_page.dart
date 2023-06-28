@@ -29,7 +29,7 @@ class ExercisesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exercicio de braços 1"),
+        title: Text("${exerciseModel.name} / ${exerciseModel.training}"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -41,8 +41,7 @@ class ExercisesPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             ElevatedButton(
               onPressed: () {},
@@ -55,9 +54,9 @@ class ExercisesPage extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const Text(
-              "Aqui eu explico como fazer o exercicio de braços",
-              style: TextStyle(
+            Text(
+              exerciseModel.howToMake,
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
@@ -69,12 +68,13 @@ class ExercisesPage extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const Text(
-              "Sentindo meus bracos doendo muito",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(listFeeling.length, (index) {
+                FeelingModel feelingNow = listFeeling[index];
+                return Text(feelingNow.feeling);
+              }),
+            )
           ],
         ),
       ),
