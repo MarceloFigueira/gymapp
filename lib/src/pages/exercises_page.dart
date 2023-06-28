@@ -28,6 +28,7 @@ class ExercisesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       appBar: AppBar(
         title: Text("${exerciseModel.name} / ${exerciseModel.training}"),
       ),
@@ -39,14 +40,32 @@ class ExercisesPage extends StatelessWidget {
           Icons.add,
         ),
       ),
-      body: Padding(
+      body: Container(
+        margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+        ),
         child: ListView(
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Enviar foto"),
+            SizedBox(
+              height: 250,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Enviar foto"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Tirar foto"),
+                  ),
+                ],
+              ),
             ),
+            const SizedBox(height: 8),
             const Text(
               "Como fazer",
               style: TextStyle(
@@ -54,13 +73,19 @@ class ExercisesPage extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+            const SizedBox(height: 8),
             Text(
               exerciseModel.howToMake,
               style: const TextStyle(
                 fontSize: 16,
               ),
             ),
-            const Divider(),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Divider(
+                color: Colors.black,
+              ),
+            ),
             const Text(
               "Como estou me sentindo",
               style: TextStyle(
@@ -68,11 +93,24 @@ class ExercisesPage extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+            const SizedBox(height: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(listFeeling.length, (index) {
                 FeelingModel feelingNow = listFeeling[index];
-                return Text(feelingNow.feeling);
+                return ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(feelingNow.feeling),
+                  subtitle: Text(feelingNow.date),
+                  leading: const Icon(Icons.double_arrow),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    color: Colors.red,
+                    onPressed: () {
+                      print("DELETAR ${feelingNow.feeling}");
+                    },
+                  ),
+                );
               }),
             )
           ],
