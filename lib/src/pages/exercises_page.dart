@@ -30,7 +30,30 @@ class ExercisesPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue,
       appBar: AppBar(
-        title: Text("${exerciseModel.name} / ${exerciseModel.training}"),
+        title: Column(
+          children: [
+            Text(
+              exerciseModel.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+            ),
+            Text(
+              exerciseModel.training,
+              style: const TextStyle(fontSize: 15),
+            ),
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: const Color(0xff0A6D92),
+        elevation: 0,
+        toolbarHeight: 72,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(32),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
