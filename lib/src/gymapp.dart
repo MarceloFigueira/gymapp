@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gymapp/src/pages/exercises_page.dart';
+import 'package:gymapp/src/pages/authentication_page.dart';
 
 class GymApp extends StatelessWidget {
   const GymApp({super.key});
@@ -11,7 +11,7 @@ class GymApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: ExercisesPage(),
+      home: const AuthenticationPage(),
     );
   }
 }
