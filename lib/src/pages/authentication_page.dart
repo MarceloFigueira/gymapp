@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gymapp/components/form_decoration.dart';
 import 'package:gymapp/core/my_colors.dart';
+import 'package:gymapp/validators/form_validators.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({super.key});
@@ -10,6 +11,7 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
+  FormValidators formValidators = FormValidators();
   bool toEnter = true;
   final _formKey = GlobalKey<FormState>();
 
@@ -47,31 +49,12 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                       ),
                       TextFormField(
                         decoration: getAuthenticationInputDecoration("E-mail"),
-                        validator: (String? value) {
-                          if (value == null) {
-                            return "O E-mail não pode estar vazio";
-                          }
-                          if (value.length < 5) {
-                            return "O e-mail é muito curto";
-                          }
-                          if (!value.contains("@")) {
-                            return "O e-mail não é válido";
-                          }
-                          return null;
-                        },
+                        validator: formValidators.validatorEmail,
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
                         decoration: getAuthenticationInputDecoration("Senha"),
-                        validator: (String? value) {
-                          if (value == null) {
-                            return "A senha não pode estar vazio";
-                          }
-                          if (value.length < 3) {
-                            return "A senha é muito curto";
-                          }
-                          return null;
-                        },
+                        validator: formValidators.validatorPassword,
                       ),
                       const SizedBox(height: 8),
                       Visibility(
@@ -81,30 +64,13 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                               TextFormField(
                                 decoration: getAuthenticationInputDecoration(
                                     "Confirme a Senha"),
-                                validator: (String? value) {
-                                  if (value == null) {
-                                    return "A nova senha não pode estar vazio";
-                                  }
-                                  if (value.length < 3) {
-                                    return "A nova senha é muito curto";
-                                  }
-
-                                  return null;
-                                },
+                                validator: formValidators.validatorNewPassword,
                               ),
                               const SizedBox(height: 8),
                               TextFormField(
                                 decoration:
                                     getAuthenticationInputDecoration("Nome"),
-                                validator: (String? value) {
-                                  if (value == null) {
-                                    return "O Nome não pode estar vazio";
-                                  }
-                                  if (value.length < 3) {
-                                    return "O Nome é muito curto";
-                                  }
-                                  return null;
-                                },
+                                validator: formValidators.validatorName,
                               ),
                             ],
                           )),
