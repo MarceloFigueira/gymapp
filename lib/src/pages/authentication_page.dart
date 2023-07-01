@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gymapp/components/form_decoration.dart';
 import 'package:gymapp/core/my_colors.dart';
 
 class AuthenticationPage extends StatefulWidget {
@@ -43,30 +44,25 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                         height: 128,
                       ),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("E-mail"),
-                        ),
+                        decoration: getAuthenticationInputDecoration("E-mail"),
                       ),
+                      const SizedBox(height: 8),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("Senha"),
-                        ),
-                        obscureText: true,
+                        decoration: getAuthenticationInputDecoration("Senha"),
                       ),
+                      const SizedBox(height: 8),
                       Visibility(
                           visible: !toEnter,
                           child: Column(
                             children: [
                               TextFormField(
-                                decoration: const InputDecoration(
-                                  label: Text("Confirme a Senha"),
-                                ),
-                                obscureText: true,
+                                decoration: getAuthenticationInputDecoration(
+                                    "Confirme a Senha"),
                               ),
+                              const SizedBox(height: 8),
                               TextFormField(
-                                decoration: const InputDecoration(
-                                  label: Text("Nome"),
-                                ),
+                                decoration:
+                                    getAuthenticationInputDecoration("Nome"),
                               ),
                             ],
                           )),
